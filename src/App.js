@@ -2,20 +2,33 @@ import React, {useState} from 'react';
 import Person from './Person/Person';
 import './App.css';
 
+const shortid = require('shortid');
+
+// Creates a person object with a unique id for database storage and list render efficiency
+function makePerson(name, age, id=null) {
+    return {id: (id) ? id : shortid.generate(), name, age};
+}
+
 function App() {
     const [statePersons, setStatePersons] = useState([
-        {name: "Max", age: 28},
-        {name: "Manu", age: 29},
-        {name: "Stephanie", age: 19},
-        {name: "James", age: 30}
+        makePerson('Max', 28),
+        makePerson('Manu', 25),
+        makePerson('Stephanie', 19),
+        makePerson('James', 30)
     ]);
 
     const [showPersons, setShowPersons] = useState(false);
 
-    const switchNameHandler = (event, index) => {
-        const newPersons = statePersons.slice(); // slice operator to copy, can also do spread [...x]
-        newPersons[index].name = event.target.value;
-        setStatePersons(newPersons)
+    const switchNameHandler = (event, id) => {
+        const index = statePersons.findIndex(p => p.id === id);
+        if (index >= 0) {
+            const newPersons = statePersons.slice(); // slice operator to copy, can also do spread [...x
+
+            // Immutability is super important so we make a new person object but with same id.
+            const oldP = statePersons[index];
+            newPersons[index] = makePerson(event.target.value, oldP.age, oldP.id);
+            setStatePersons(newPersons)
+        }
     };
 
     const [inputName, setInputName] = useState('');
@@ -24,17 +37,20 @@ function App() {
     const addPersonHandler = () => {
         if (inputName.length > 0 && !isNaN(parseInt(inputAge))) {
             const newPersons = [...statePersons];
-            newPersons.push({name: inputName, age:inputAge});
+            newPersons.push(makePerson(inputName, inputAge));
             setStatePersons(newPersons);
         } else {
             console.log('Invalid Person Input')
         }
     };
 
-    const deletePersonHandler = (event, index) => {
+    const deletePersonHandler = (id) => {
         const newPersons = [...statePersons];
-        newPersons.splice(index, 1);
-        setStatePersons(newPersons);
+        const index = newPersons.findIndex(p => p.id === id);
+        if (index > 0 ) {
+            newPersons.splice(index, 1);
+            setStatePersons(newPersons);
+        }
     };
 
     const togglePersonsHandler = () => {
@@ -43,15 +59,18 @@ function App() {
 
     // best way to output conditional content
     let PersonsHTML = (showPersons === true) ?
-        (statePersons.length > 0) ? statePersons.map((person, index) => {
+        (statePersons.length > 0) ? statePersons.map((person) => {
             return (<Person
-                key={index}
-                index={index}
+                // react expects a key for elements from arrays to render efficiently
+                // index is unreliable as the order of the array elements can change, therefore we use an unique id.
+                key={person.id}
+                id={person.id}
+
                 name={person.name}
                 age={person.age}
 
-                click={() => deletePersonHandler(index)}
-                change={(e) => switchNameHandler(e, index)}
+                delete={() => deletePersonHandler(person.id)}
+                change={(e) => switchNameHandler(e, person.id)}
             />)
         }) : <div className="warning-text">No persons</div> : null;
 

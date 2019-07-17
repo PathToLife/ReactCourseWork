@@ -6,7 +6,7 @@ const Person = (props) => {
         <div className="Person">
             <span>I'm {props.name} and I am {props.age} years old.</span>
             <br/>
-            <input type="text" onChange={props.change} value={props.name}/>
+            <input type="text" onChange={(e) => props.change(e, props.index)} value={props.name}/>
         </div>
     )
 };

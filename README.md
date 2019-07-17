@@ -8,8 +8,6 @@ Automated deployment of the master branch can be found here: [Test App Deloyment
 
 ## Run/Build is standard for reacts apps made using create-react-app
 
-run:
-
 ### `npm start`
 
 Runs the app in the development mode.<br>

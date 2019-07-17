@@ -3,10 +3,10 @@ import './Person.css';
 
 const Person = (props) => {
     return (
-        <div className="Person">
+        <div className="Person" onClick={props.click}>
             <span>I'm {props.name} and I am {props.age} years old.</span>
             <br/>
-            <input type="text" onChange={(e) => props.change(e, props.index)} value={props.name}/>
+            <input type="text" onChange={props.change} value={props.name}/>
         </div>
     )
 };

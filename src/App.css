@@ -2,6 +2,7 @@ Button {
   background-color: white;
   border: 1px solid blue;
   padding: 8px;
+  margin: 5px;
 }
 
 Input {
@@ -10,4 +11,8 @@ Input {
 
 .App {
   text-align: center;
+}
+
+.warning-text {
+  color: red;
 }

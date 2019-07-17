@@ -47,7 +47,7 @@ function App() {
     const deletePersonHandler = (id) => {
         const newPersons = [...statePersons];
         const index = newPersons.findIndex(p => p.id === id);
-        if (index > 0 ) {
+        if (index >= 0 ) {
             newPersons.splice(index, 1);
             setStatePersons(newPersons);
         }

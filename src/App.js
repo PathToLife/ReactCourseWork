@@ -5,7 +5,7 @@ import './App.css';
 const shortid = require('shortid');
 
 // Creates a person object with a unique id for database storage and list render efficiency
-function makePerson(name, age, id=null) {
+function makePerson(name, age, id = null) {
     return {id: (id) ? id : shortid.generate(), name, age};
 }
 
@@ -32,7 +32,7 @@ function App() {
     };
 
     const [inputName, setInputName] = useState('');
-    const [inputAge, setInputAge] = useState('');
+    const [inputAge, setInputAge] = useState('20');
 
     const addPersonHandler = () => {
         if (inputName.length > 0 && !isNaN(parseInt(inputAge))) {
@@ -40,14 +40,14 @@ function App() {
             newPersons.push(makePerson(inputName, inputAge));
             setStatePersons(newPersons);
         } else {
-            console.log('Invalid Person Input')
+            console.log('Invalid Person Input', inputName, inputAge)
         }
     };
 
     const deletePersonHandler = (id) => {
         const newPersons = [...statePersons];
         const index = newPersons.findIndex(p => p.id === id);
-        if (index >= 0 ) {
+        if (index >= 0) {
             newPersons.splice(index, 1);
             setStatePersons(newPersons);
         }
@@ -72,24 +72,30 @@ function App() {
                 delete={() => deletePersonHandler(person.id)}
                 change={(e) => switchNameHandler(e, person.id)}
             />)
-        }) : <div className="warning-text">No persons</div> : null;
+        }) : <div className="warning-text bold Person">No persons</div> : null;
 
     return (
         <div className="App">
             <h1>Hi I'm a React App</h1>
             <div>
-                <div>
-                    Name: <input type="text" onChange={(e) => setInputName(e.target.value)}/>
+                <div className="input-area">
+                    Name:
+                    <input
+                        type="text"
+                        placeholder="type a name"
+                        onChange={(e) => setInputName(e.target.value)}
+                    />
                     <br/>
-                    Age: <input type="number" onChange={(e) => setInputAge(e.target.value)}/>
+                    Age: <input type="number" value={inputAge} onChange={(e) => setInputAge(e.target.value)}/>
+                    <button id='add-person-btn' onClick={addPersonHandler}>Add Person</button>
                 </div>
-                <button onClick={addPersonHandler}>Add Person</button>
+
             </div>
 
             <button
                 onClick={togglePersonsHandler}
                 className={(showPersons ? 'red' : 'lightgreen')}>
-                Persons
+                Toggle Persons
             </button>
             {PersonsHTML}
         </div>

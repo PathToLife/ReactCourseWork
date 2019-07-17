@@ -8,7 +8,7 @@ const Person = (props) => {
             <br/>
             <input type="text" onChange={props.change} value={props.name}/>
             <button className="delete" onClick={props.delete}>X</button>
-            <div className="id">ID: {props.id}</div>
+            <div className="id">ID/Key: {props.id}</div>
         </div>
     )
 };

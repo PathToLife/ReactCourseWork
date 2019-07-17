@@ -17,7 +17,7 @@ function App() {
         makePerson('James', 30)
     ]);
 
-    const [showPersons, setShowPersons] = useState(false);
+    const [showPersons, setShowPersons] = useState(true);
 
     const switchNameHandler = (event, id) => {
         const index = statePersons.findIndex(p => p.id === id);

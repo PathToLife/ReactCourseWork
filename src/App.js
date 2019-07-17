@@ -86,7 +86,11 @@ function App() {
                 <button onClick={addPersonHandler}>Add Person</button>
             </div>
 
-            <button onClick={togglePersonsHandler}>Show Persons</button>
+            <button
+                onClick={togglePersonsHandler}
+                className={(showPersons ? 'red' : 'lightgreen')}>
+                Persons
+            </button>
             {PersonsHTML}
         </div>
     );

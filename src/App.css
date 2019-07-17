@@ -9,6 +9,14 @@ Input {
   margin: 10px;
 }
 
+.red {
+  background-color: red;
+}
+
+.lightgreen {
+  background-color: lightgreen;
+}
+
 .App {
   text-align: center;
 }

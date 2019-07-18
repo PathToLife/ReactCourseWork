@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Person from './Person/Person';
 import './App.css';
+import Radium from 'radium';
 
 const shortid = require('shortid');
 
@@ -9,7 +10,7 @@ function makePerson(name, age, id = null) {
     return {id: (id) ? id : shortid.generate(), name, age};
 }
 
-function App() {
+const AppUsingHooks = Radium(() => {
     const [statePersons, setStatePersons] = useState([
         makePerson('Max', 28),
         makePerson('Manu', 25),
@@ -100,6 +101,6 @@ function App() {
             {PersonsHTML}
         </div>
     );
-}
+});
 
-export default App;
+export default AppUsingHooks;

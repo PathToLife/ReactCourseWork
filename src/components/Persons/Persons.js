@@ -15,6 +15,10 @@ class Persons extends Component{
         log('Mounted')
     }
 
+    componentWillUnmount() {
+        log('Unmounted');
+    }
+
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         log('shouldComponentUpdate');
         return true;

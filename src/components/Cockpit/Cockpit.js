@@ -8,6 +8,10 @@ const Cockpit = (props) => {
 
     useEffect(() => {
         log('run once');
+
+        return () => {
+            log('run on unmount');
+        }
     }, []);
 
     useEffect(() => {

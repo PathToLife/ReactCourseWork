@@ -1,0 +1,12 @@
+button {
+    padding: 8px;
+}
+
+.red {
+    color: white;
+    background-color: red;
+}
+
+.bold {
+    font-weight: bold;
+}

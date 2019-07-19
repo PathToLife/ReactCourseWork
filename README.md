@@ -30,3 +30,11 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## VSCode Setup
+https://code.visualstudio.com/docs/nodejs/reactjs-tutorial
+
+1. Install VSCode Plugin "Debugger for Chrome"
+2. ```npm install -g eslint```
+3. Install VSCode Plugin "ESLint"
+4. Ctrl+Shift+P => "ESLint: Create ESLint configuration" 

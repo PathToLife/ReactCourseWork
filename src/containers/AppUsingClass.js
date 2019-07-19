@@ -18,7 +18,6 @@ const shortid = require('shortid');
 // };
 
 class AppUsingClass extends React.Component {
-
     state = {
         persons: [
             AppUsingClass.makePerson('James', 20),
@@ -75,6 +74,7 @@ class AppUsingClass extends React.Component {
             <div className="App">
                 <Cockpit
                     persons={this.state.persons}
+                    showing={this.state.showPersons}
                     togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
                 />
                 {personsComponent}

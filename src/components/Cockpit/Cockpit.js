@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from './Cockpit.modules.css';
+import classes from './Cockpit.module.css';
+
 
 const Cockpit = (props) => {
 
@@ -12,14 +13,14 @@ const Cockpit = (props) => {
         assignedClasses.push(classes.bold)
     }
 
-
     return (
         <div className={classes.Cockpit}>
             <h1>Hello, I'm a React App</h1>
-            <p className={assignedClasses.join(' ')}>This is a real app</p>
+            <p className={assignedClasses.join(' ')}>This is a react app</p>
             <button
+                className={props.showing ? classes.salmon : classes.green}
                 onClick={props.togglePersons}>
-                Toggle Persons
+                {props.showing ? 'Hide' : 'Show'} Persons
             </button>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 /**
+ * Works in production builds
  * Catches runtime errors from components and prints out some user feedback
  * Only use this if you have some code that may fail any you can't control that
  *

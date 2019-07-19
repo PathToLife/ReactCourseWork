@@ -1,6 +1,6 @@
 import React from 'react';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 import './App.css';
 
 const shortid = require('shortid');
@@ -51,7 +51,6 @@ class AppUsingClass extends React.Component {
         };
 
         const changeNameHandler = (event, id) => {
-
             const newState = [...this.state.persons];
             const index = newState.findIndex(p => p.id === id);
             if (index >= 0) {
@@ -63,28 +62,22 @@ class AppUsingClass extends React.Component {
 
         };
 
-        let personsHtml = null;
+        let personsComponent = null;
         if (this.state.showPersons) {
-            personsHtml = this.state.persons.map(p => {
-                return (
-                    <ErrorBoundary key={p.id}>
-                        <Person name={p.name} age={p.age}
-                                id={p.id}
-                                delete={() => deletePersonHandler(p.id)}
-                                change={(e) => changeNameHandler(e, p.id)}/>
-                    </ErrorBoundary>
-                )
-            })
+            personsComponent = (<Persons
+                persons={this.state.persons}
+                delete={deletePersonHandler}
+                nameChanged={changeNameHandler}
+            />);
         }
 
         return (
             <div className="App">
-                <h1>Hello</h1>
-                <button
-                    onClick={() => this.setState({showPersons: !this.state.showPersons})}>
-                    Toggle Persons
-                </button>
-                {personsHtml}
+                <Cockpit
+                    persons={this.state.persons}
+                    togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
+                />
+                {personsComponent}
             </div>
         )
     }

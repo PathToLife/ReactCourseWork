@@ -3,6 +3,12 @@ import Person from '../components/Persons/Person/Person';
 import './App.css';
 import Radium from 'radium';
 
+/**
+ * @deprecated Replaced with AppUsingClass
+ * Will not be developed further until the need to learn react hooks outweighs the need to learn native.
+ */
+
+
 const shortid = require('shortid');
 
 // Creates a person object with a unique id for database storage and list render efficiency

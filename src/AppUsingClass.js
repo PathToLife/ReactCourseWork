@@ -84,7 +84,6 @@ class AppUsingClass extends React.Component {
             <div className="App">
                 <h1>Hello</h1>
                 <button
-                    style={toggleButtonStyle}
                     onClick={() => this.setState({showPersons: !this.state.showPersons})}>
                     Toggle Persons
                 </button>

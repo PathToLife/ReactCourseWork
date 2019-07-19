@@ -1,12 +1,4 @@
-Button {
-  background-color: white;
-  border: 1px solid blue;
-  padding: 8px;
-  margin: 5px;
-  cursor: pointer;
-}
-
-Input {
+input {
   margin: 10px;
   padding: 3px;
 }
@@ -14,12 +6,6 @@ Input {
 .input-area {
   display: inline-block;
   position: relative;
-}
-
-#add-person-btn {
-  display: inline-block;
-  position: absolute;
-  top: 0;
 }
 
 .red {
@@ -36,6 +22,20 @@ Input {
 
 .App {
   text-align: center;
+}
+
+.App button {
+    background-color: white;
+    border: 1px solid blue;
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.App #add-person-btn {
+    display: inline-block;
+    position: absolute;
+    top: 0;
 }
 
 .warning-text {

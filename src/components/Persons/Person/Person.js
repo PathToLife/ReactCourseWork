@@ -9,7 +9,7 @@ import classes from './Person.module.css';
  */
 
 const Person = (props) => {
-    console.log('[Person.js] Rendering...');
+    //console.log('[Person.js] Rendering...');
     return (
         <div className={classes.Person}>
             <span>I'm {props.name} and I am {props.age} years old.</span>

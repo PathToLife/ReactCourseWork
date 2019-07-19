@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Cockpit.module.css';
 
 
+const log = (...args) => console.log('[Cockpit.js]', ...args);
+
 const Cockpit = (props) => {
+
+    useEffect(() => {
+        log('run once');
+    }, []);
+
+    useEffect(() => {
+        log('run on props.persons change only');
+
+        // Http request faking
+        setTimeout(() => {
+            alert('Saved Data to Cloud');
+        }, 1000)
+    }, [props.persons]);
 
     const assignedClasses = [];
 

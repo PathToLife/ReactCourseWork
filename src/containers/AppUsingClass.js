@@ -17,6 +17,9 @@ const shortid = require('shortid');
 //     console.log(...args);
 // };
 
+const log = (...args) => console.log('[App.js]', ...args);
+
+
 class AppUsingClass extends React.Component {
 
     constructor(props) {
@@ -50,8 +53,18 @@ class AppUsingClass extends React.Component {
     }
 
     componentDidMount() {
-        console.log('[App.js] Mounted');
+        log('Mounted');
     }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        log('shouldComponentUpdate');
+        return true;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        log('componentDidUpdate')
+    }
+
 
     render() {
         console.log('[App.js] Rendering...');

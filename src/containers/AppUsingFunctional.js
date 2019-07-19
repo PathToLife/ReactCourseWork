@@ -3,20 +3,19 @@ import Person from '../components/Persons/Person/Person';
 import './App.css';
 import Radium from 'radium';
 
-/**
- * @deprecated Replaced with AppUsingClass
- * Will not be developed further until the need to learn react hooks outweighs the need to learn native.
- */
+import {generate} from "shortid";
 
-
-const shortid = require('shortid');
 
 // Creates a person object with a unique id for database storage and list render efficiency
 function makePerson(name, age, id = null) {
-    return {id: (id) ? id : shortid.generate(), name, age};
+    return {id: (id) ? id : generate(), name, age};
 }
 
-const AppUsingHooks = Radium(() => {
+/**
+ * @deprecated Replaced with AppUsingClass
+ * Will not be developed further until the need to learn functional react hooks outweighs the need to learn native.
+ */
+const AppUsingFunctional = Radium(() => {
     const [statePersons, setStatePersons] = useState([
         makePerson('Max', 28),
         makePerson('Manu', 25),
@@ -109,4 +108,4 @@ const AppUsingHooks = Radium(() => {
     );
 });
 
-export default AppUsingHooks;
+export default AppUsingFunctional;

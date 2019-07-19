@@ -18,6 +18,12 @@ const shortid = require('shortid');
 // };
 
 class AppUsingClass extends React.Component {
+
+    constructor(props) {
+        super(props);
+        console.log('[App.js] constructor');
+    }
+
     state = {
         persons: [
             AppUsingClass.makePerson('James', 20),
@@ -26,6 +32,11 @@ class AppUsingClass extends React.Component {
         ],
         showPersons: true
     };
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
 
     static makePerson(name, age) {
         if (name.length <= 0) throw Error('field "name" cannot be empty');
@@ -38,7 +49,12 @@ class AppUsingClass extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log('[App.js] Mounted');
+    }
+
     render() {
+        console.log('[App.js] Rendering...');
 
         const deletePersonHandler = (id) => {
             const newState = [...this.state.persons];

@@ -15,7 +15,7 @@ const Cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>
-            <h1>Hello, I'm a React App</h1>
+            <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is a react app</p>
             <button
                 className={props.showing ? classes.salmon : classes.green}

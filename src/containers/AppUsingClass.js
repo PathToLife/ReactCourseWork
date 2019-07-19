@@ -1,7 +1,7 @@
 import React from 'react';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import './App.css';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const shortid = require('shortid');
 

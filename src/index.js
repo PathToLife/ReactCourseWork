@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 //import AppUsingHooks from './AppUsingHooks';
-import AppUsingClass from './AppUsingClass';
+import AppUsingClass from './containers/AppUsingClass';
 
 import * as serviceWorker from './serviceWorker';
 

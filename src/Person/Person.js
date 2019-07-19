@@ -15,7 +15,7 @@ const Person = (props) => {
             <span>I'm {props.name} and I am {props.age} years old.</span>
             <br/>
             <input type="text" onChange={props.change} value={props.name}/>
-            <button className={classes.delete} onClick={props.delete}>X</button>
+            <button className={classes.deleteButton} onClick={props.delete} about="remove person">X</button>
             <div className={classes.id}>ID/Key: {props.id}</div>
         </div>
     )

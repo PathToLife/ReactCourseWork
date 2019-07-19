@@ -15,10 +15,19 @@
     }
 }
 
-.delete {
+.deleteButton {
     position: absolute;
     top: 10px;
+    padding: 8px;
     right: 10px;
+    border: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: salmon;
 }
 
 .id {

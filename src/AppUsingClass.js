@@ -1,6 +1,7 @@
 import React from 'react';
 import Person from './Person/Person';
 import './App.css';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const shortid = require('shortid');
 
@@ -12,9 +13,9 @@ const shortid = require('shortid');
  */
 
 // python nerd =P
-const print = (...args) => {
-    console.log(...args);
-};
+// const print = (...args) => {
+//     console.log(...args);
+// };
 
 class AppUsingClass extends React.Component {
 
@@ -66,19 +67,15 @@ class AppUsingClass extends React.Component {
         if (this.state.showPersons) {
             personsHtml = this.state.persons.map(p => {
                 return (
-                    <Person name={p.name} age={p.age}
-                            id={p.id} key={p.id}
-                            delete={() => deletePersonHandler(p.id)}
-                            change={(e) => changeNameHandler(e, p.id)}/>
+                    <ErrorBoundary key={p.id}>
+                        <Person name={p.name} age={p.age}
+                                id={p.id}
+                                delete={() => deletePersonHandler(p.id)}
+                                change={(e) => changeNameHandler(e, p.id)}/>
+                    </ErrorBoundary>
                 )
             })
         }
-
-        const toggleButtonStyle = {
-            backgroundColor: (this.state.showPersons) ? 'red' : 'lightgreen',
-            color: 'white',
-            cursor: 'pointer'
-        };
 
         return (
             <div className="App">

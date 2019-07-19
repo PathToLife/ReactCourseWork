@@ -24,12 +24,16 @@ input {
   text-align: center;
 }
 
-.App button {
-    background-color: white;
+.App > button {
+    background-color: lightblue;
     border: 1px solid blue;
     padding: 8px;
     margin: 5px;
     cursor: pointer;
+}
+
+.App > button:hover {
+    background-color: lightgreen;
 }
 
 .App #add-person-btn {

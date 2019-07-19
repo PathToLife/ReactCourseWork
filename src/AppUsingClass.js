@@ -1,7 +1,6 @@
 import React from 'react';
 import Person from './Person/Person';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 
 const shortid = require('shortid');
 
@@ -16,23 +15,6 @@ const shortid = require('shortid');
 const print = (...args) => {
     console.log(...args);
 };
-
-const ToggleButton = Radium((props) => {
-
-    const style = {
-        backgroundColor: (props.active) ? 'red' : 'lightgreen',
-        color: 'white',
-        cursor: 'pointer',
-        ':hover': {
-            backgroundColor: (props.active) ? 'salmon' : 'green',
-            color: 'black'
-        }
-    };
-
-    return (
-        <button onClick={props.onClick} style={style}>{props.children}</button>
-    )
-});
 
 class AppUsingClass extends React.Component {
 
@@ -95,31 +77,21 @@ class AppUsingClass extends React.Component {
         const toggleButtonStyle = {
             backgroundColor: (this.state.showPersons) ? 'red' : 'lightgreen',
             color: 'white',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: (this.state.showPersons) ? 'salmon' : 'green',
-                color: 'black'
-            }
+            cursor: 'pointer'
         };
 
         return (
-            <StyleRoot>
-                <div className="App">
-                    <h1>Hello</h1>
-                    <button
-                        style={toggleButtonStyle}
-                        onClick={() => this.setState({showPersons: !this.state.showPersons})}>
-                        Toggle Persons
-                    </button>
-                    <ToggleButton active={this.state.showPersons}
-                                  onClick={() => this.setState({showPersons: !this.state.showPersons})}>
-                        Toggle Persons
-                    </ToggleButton>
-                    {personsHtml}
-                </div>
-            </StyleRoot>
+            <div className="App">
+                <h1>Hello</h1>
+                <button
+                    style={toggleButtonStyle}
+                    onClick={() => this.setState({showPersons: !this.state.showPersons})}>
+                    Toggle Persons
+                </button>
+                {personsHtml}
+            </div>
         )
     }
 }
 
-export default Radium(AppUsingClass);
+export default AppUsingClass;

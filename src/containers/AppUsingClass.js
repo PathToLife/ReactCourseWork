@@ -103,7 +103,7 @@ class AppUsingClass extends React.Component {
             <div className="App">
                 <Cockpit
                     title={this.props.title}
-                    persons={this.state.persons}
+                    length={this.state.persons.length}
                     showing={this.state.showPersons}
                     togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
                 />

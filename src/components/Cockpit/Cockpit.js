@@ -18,19 +18,26 @@ const Cockpit = (props) => {
         log('run on props.persons change only');
 
         // Http request faking
-        setTimeout(() => {
-            alert('Saved Data to Cloud');
-        }, 1000)
+        const timer = setTimeout(() => {
+            // alert('Saved Data to Cloud');
+        }, 1000);
+
+        return () => {
+            // Don't send a request if this function is spammed, only on the last call
+            clearTimeout(timer);
+        }
     }, [props.persons]);
 
     const assignedClasses = [];
 
-    if (props.persons.length <= 2) {
+    if (props.length <= 2) {
         assignedClasses.push(classes.red)
     }
-    if (props.persons.length <= 1) {
+    if (props.length <= 1) {
         assignedClasses.push(classes.bold)
     }
+
+    log('rendering');
 
     return (
         <div className={classes.Cockpit}>
@@ -45,4 +52,6 @@ const Cockpit = (props) => {
     )
 };
 
-export default Cockpit;
+
+// Memo only re-renders the component if the props change
+export default React.memo(Cockpit);

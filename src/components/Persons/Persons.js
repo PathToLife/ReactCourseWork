@@ -21,11 +21,8 @@ class Persons extends Component{
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         log('shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
+
+        return nextProps.persons !== this.props.persons;
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -46,6 +43,7 @@ class Persons extends Component{
                     name={p.name}
                     age={p.age}
                     key={p.id}
+                    id={p.id}
                     changed={event => this.props.nameChanged(event, p.id)}
                 />
             }

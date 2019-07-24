@@ -9,10 +9,10 @@ const shortid = require('shortid');
 
 /**
  * This React Component was to made so that we can use the radium inline style generator.
- * As of 06/2019 there is no release version of radium that supports react hooks.
- *
- * Plus it's good practise to learn class components so that we can work on legacy projects / react native.
- */
+* As of 06/2019 there is no release version of radium that supports react hooks.
+*
+* Plus it's good practise to learn class components so that we can work on legacy projects / react native.
+*/
 
 // python nerd =P
 // const print = (...args) => {

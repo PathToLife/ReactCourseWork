@@ -3,6 +3,8 @@ import classes from './Person.module.css';
 import Aux from './../../../hoc/Auxillary';
 import withClass from '../../../hoc/withClassFunction';
 
+import PropTypes from 'prop-types';
+
 /**
  * Component using css modules.
  * It targets a component specifically by generating a unique class names
@@ -20,6 +22,14 @@ const Person = (props) => {
             <div className={classes.id}>ID/Key: {props.id}</div>
         </Aux>
     );
+};
+
+Person.propTypes = {
+    delete: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func,
+    id: PropTypes.string
 };
 
 export default withClass(Person, classes.Person);

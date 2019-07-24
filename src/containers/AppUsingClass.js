@@ -9,10 +9,10 @@ const shortid = require('shortid');
 
 /**
  * This React Component was to made so that we can use the radium inline style generator.
-* As of 06/2019 there is no release version of radium that supports react hooks.
-*
-* Plus it's good practise to learn class components so that we can work on legacy projects / react native.
-*/
+ * As of 06/2019 there is no release version of radium that supports react hooks.
+ *
+ * Plus it's good practise to learn class components so that we can work on legacy projects / react native.
+ */
 
 // python nerd =P
 // const print = (...args) => {
@@ -36,7 +36,8 @@ class AppUsingClass extends React.Component {
             AppUsingClass.makePerson('Stephanie', 24)
         ],
         showPersons: true,
-        changeCounter: 0
+        changeCounter: 0,
+        authenticated: false
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -67,6 +68,10 @@ class AppUsingClass extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         log('componentDidUpdate')
     }
+
+    loginHandler = () => {
+        this.setState({authenticated: true});
+    };
 
 
     render() {
@@ -106,6 +111,7 @@ class AppUsingClass extends React.Component {
                 persons={this.state.persons}
                 delete={deletePersonHandler}
                 nameChanged={changeNameHandler}
+                isAuth={this.state.authenticated}
             />);
         }
 
@@ -116,6 +122,7 @@ class AppUsingClass extends React.Component {
                     length={this.state.persons.length}
                     showing={this.state.showPersons}
                     togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
+                    login={this.loginHandler}
                 />
                 {personsComponent}
             </Aux>

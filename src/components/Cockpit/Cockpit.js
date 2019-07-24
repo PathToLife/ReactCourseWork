@@ -54,6 +54,7 @@ const Cockpit = (props) => {
             >
                 {props.showing ? 'Hide' : 'Show'} Persons
             </button>
+            <button className={classes.salmon} onClick={props.login}>Login</button>
         </div>
     )
 };

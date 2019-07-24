@@ -35,7 +35,8 @@ class AppUsingClass extends React.Component {
             AppUsingClass.makePerson('Harry', 25),
             AppUsingClass.makePerson('Stephanie', 24)
         ],
-        showPersons: true
+        showPersons: true,
+        changeCounter: 0
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -87,7 +88,14 @@ class AppUsingClass extends React.Component {
                 const newP = {...newState[index]};
                 newP.name = event.target.value;
                 newState[index] = newP;
-                this.setState({persons: newState});
+
+                // Updating the state when depending on old state, is super important to use function to have n accurate snapshot of state
+                this.setState((previousState, props) => {
+                    return {
+                        persons: newState,
+                        changeCounter: previousState.changeCounter + 1
+                    }
+                });
             }
 
         };

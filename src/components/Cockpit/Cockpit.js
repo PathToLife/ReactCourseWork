@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import classes from './Cockpit.module.css';
-
+import AuthContext from '../../context/auth-context';
 
 const log = (...args) => console.log('[Cockpit.js]', ...args);
 
@@ -54,7 +54,14 @@ const Cockpit = (props) => {
             >
                 {props.showing ? 'Hide' : 'Show'} Persons
             </button>
-            <button className={classes.salmon} onClick={props.login}>Login</button>
+            <AuthContext.Consumer>
+                {(context) => {
+                    return (
+                        <button className={classes.salmon} onClick={context.login}>Login</button>
+                    )
+                }}
+
+            </AuthContext.Consumer>
         </div>
     )
 };

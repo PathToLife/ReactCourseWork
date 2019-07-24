@@ -5,6 +5,8 @@ import './App.css';
 import withClass from '../hoc/withClassFunction';
 import Aux from '../hoc/Auxillary';
 
+import AuthContext from '../context/auth-context';
+
 const shortid = require('shortid');
 
 /**
@@ -111,20 +113,23 @@ class AppUsingClass extends React.Component {
                 persons={this.state.persons}
                 delete={deletePersonHandler}
                 nameChanged={changeNameHandler}
-                isAuth={this.state.authenticated}
             />);
         }
 
         return (
             <Aux>
-                <Cockpit
-                    title={this.props.title}
-                    length={this.state.persons.length}
-                    showing={this.state.showPersons}
-                    togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
-                    login={this.loginHandler}
-                />
-                {personsComponent}
+                <AuthContext.Provider value={{
+                    authenticated: this.state.authenticated,
+                    login: this.loginHandler
+                }}>
+                    <Cockpit
+                        title={this.props.title}
+                        length={this.state.persons.length}
+                        showing={this.state.showPersons}
+                        togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
+                    />
+                    {personsComponent}
+                </AuthContext.Provider>
             </Aux>
         )
     }

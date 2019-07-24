@@ -4,7 +4,7 @@ import Person from './Person/Person';
 
 const log = (...args) => console.log('[Persons.js]', ...args);
 
-class Persons extends Component{
+class Persons extends Component {
 
     // static getDerivedStateFromProps(props, state) {
     //     print('getDerivedStateFromProps');
@@ -46,10 +46,9 @@ class Persons extends Component{
                     key={p.id}
                     id={p.id}
                     changed={event => this.props.nameChanged(event, p.id)}
-                    isAuth={this.props.isAuth}
                 />
-            }
-        );
+            })
     }
 }
+
 export default Persons;

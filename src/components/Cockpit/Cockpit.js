@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import classes from './Cockpit.module.css';
 
 
@@ -6,8 +6,12 @@ const log = (...args) => console.log('[Cockpit.js]', ...args);
 
 const Cockpit = (props) => {
 
+    const toggleButtonRef = useRef(null);
+
     useEffect(() => {
         log('run once');
+
+        toggleButtonRef.current.click();
 
         return () => {
             log('run on unmount');
@@ -44,8 +48,10 @@ const Cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is a react app</p>
             <button
+                ref={toggleButtonRef}
                 className={props.showing ? classes.salmon : classes.green}
-                onClick={props.togglePersons}>
+                onClick={props.togglePersons}
+            >
                 {props.showing ? 'Hide' : 'Show'} Persons
             </button>
         </div>

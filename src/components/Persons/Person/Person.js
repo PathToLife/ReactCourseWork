@@ -31,7 +31,7 @@ class Person extends Component {
                 <br/>
                 <input
                     type="text"
-                    //ref={(inputElement) => {this.inputElement = inputElement}}
+                    //ref={(inputElement) => {this.inputElement = inputElement}} // Older version of setting reference
                     ref={this.inputElementRef}
                     onChange={this.props.changed}
                     value={this.props.name}

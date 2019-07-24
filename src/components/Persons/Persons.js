@@ -36,6 +36,7 @@ class Persons extends Component{
     }
 
     render() {
+        // React can render component without root div as long as the components have keys
         return this.props.persons.map(
             p => {
                 return <Person

@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Person.module.css';
-
+//import Aux from './../../../hoc/Auxillary';
 
 /**
  * Component using css modules.
@@ -18,7 +18,7 @@ const Person = (props) => {
             <button className={classes.deleteButton} onClick={props.delete} about="remove person">X</button>
             <div className={classes.id}>ID/Key: {props.id}</div>
         </div>
-    )
+    );
 };
 
 export default Person;

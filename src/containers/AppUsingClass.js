@@ -2,7 +2,8 @@ import React from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import './App.css';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClassFunction';
+import Aux from '../hoc/Auxillary';
 
 const shortid = require('shortid');
 
@@ -101,7 +102,7 @@ class AppUsingClass extends React.Component {
         }
 
         return (
-            <WithClass classes="App">
+            <Aux>
                 <Cockpit
                     title={this.props.title}
                     length={this.state.persons.length}
@@ -109,9 +110,9 @@ class AppUsingClass extends React.Component {
                     togglePersons={() => this.setState({showPersons: !this.state.showPersons})}
                 />
                 {personsComponent}
-            </WithClass>
+            </Aux>
         )
     }
 }
 
-export default AppUsingClass;
+export default withClass(AppUsingClass, 'App');

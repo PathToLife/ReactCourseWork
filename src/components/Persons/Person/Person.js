@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Person.module.css';
-//import Aux from './../../../hoc/Auxillary';
+import Aux from './../../../hoc/Auxillary';
+import withClass from '../../../hoc/withClassFunction';
 
 /**
  * Component using css modules.
@@ -11,14 +12,14 @@ import classes from './Person.module.css';
 const Person = (props) => {
     //console.log('[Person.js] Rendering...');
     return (
-        <div className={classes.Person}>
+        <Aux>
             <span>I'm {props.name} and I am {props.age} years old.</span>
             <br/>
             <input type="text" onChange={props.changed} value={props.name}/>
             <button className={classes.deleteButton} onClick={props.delete} about="remove person">X</button>
             <div className={classes.id}>ID/Key: {props.id}</div>
-        </div>
+        </Aux>
     );
 };
 
-export default Person;
+export default withClass(Person, classes.Person);

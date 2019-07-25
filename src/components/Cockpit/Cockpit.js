@@ -55,7 +55,8 @@ const Cockpit = (props) => {
             >
                 {props.showing ? 'Hide' : 'Show'} Persons
             </button>
-            <button className={classes.salmon} onClick={authContext.login}>Login</button>
+            <button className={classes.green} onClick={authContext.login}>Login</button>
+            <button className={classes.salmon} onClick={authContext.logout}>Logout</button>
             {/*<AuthContext.Consumer>*/}
             {/*    {(context) => {*/}
             {/*        return (*/}

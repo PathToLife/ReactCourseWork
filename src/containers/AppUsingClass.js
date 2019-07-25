@@ -71,48 +71,49 @@ class AppUsingClass extends React.Component {
         log('componentDidUpdate')
     }
 
-    loginHandler = () => {
-        this.setState({authenticated: true});
+    loginHandler = (isLoggedIn) => {
+        this.setState({authenticated: isLoggedIn});
     };
 
+    deletePersonHandler = (id) => {
+        const newState = [...this.state.persons];
+        const index = newState.findIndex(p => p.id === id);
+        if (index >= 0) {
+            newState.splice(index, 1);
+            this.setState({persons: newState});
+        }
+    };
+
+    changeNameHandler = (event, id) => {
+        const newState = [...this.state.persons];
+        const index = newState.findIndex(p => p.id === id);
+        if (index >= 0) {
+            const newP = {...newState[index]};
+            newP.name = event.target.value;
+            newState[index] = newP;
+
+            // Updating the state when depending on old state, is super important to use function to have n accurate snapshot of state
+            this.setState((previousState, ) => {
+                return {
+                    persons: newState,
+                    changeCounter: previousState.changeCounter + 1
+                }
+            });
+        }
+
+    };
 
     render() {
         console.log('[App.js] Rendering...');
 
-        const deletePersonHandler = (id) => {
-            const newState = [...this.state.persons];
-            const index = newState.findIndex(p => p.id === id);
-            if (index >= 0) {
-                newState.splice(index, 1);
-                this.setState({persons: newState});
-            }
-        };
 
-        const changeNameHandler = (event, id) => {
-            const newState = [...this.state.persons];
-            const index = newState.findIndex(p => p.id === id);
-            if (index >= 0) {
-                const newP = {...newState[index]};
-                newP.name = event.target.value;
-                newState[index] = newP;
-
-                // Updating the state when depending on old state, is super important to use function to have n accurate snapshot of state
-                this.setState((previousState, props) => {
-                    return {
-                        persons: newState,
-                        changeCounter: previousState.changeCounter + 1
-                    }
-                });
-            }
-
-        };
 
         let personsComponent = null;
         if (this.state.showPersons) {
             personsComponent = (<Persons
                 persons={this.state.persons}
-                delete={deletePersonHandler}
-                nameChanged={changeNameHandler}
+                delete={this.deletePersonHandler}
+                nameChanged={this.changeNameHandler}
             />);
         }
 
@@ -120,7 +121,8 @@ class AppUsingClass extends React.Component {
             <Aux>
                 <AuthContext.Provider value={{
                     authenticated: this.state.authenticated,
-                    login: this.loginHandler
+                    login: () => this.loginHandler(true),
+                    logout: () => this.loginHandler(false)
                 }}>
                     <Cockpit
                         title={this.props.title}

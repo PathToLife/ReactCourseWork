@@ -21,20 +21,28 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
 
+    // React Class based context assignment, but unlike function components,
+    // You can only set one context to be access by functions this way.
+    // There are work around by wrapping this component with a HOC, but that's quite ugly
+    // must be named contextType and be static
+    static contextType = AuthContext;
 
     componentDidMount() {
         this.inputElementRef.current.focus();
+        // Access Context this way
+        // console.log(this.context.authenticated);
     }
 
     //console.log('[Person.js] Rendering...');
     render() {
         return (
             <Aux>
-                <AuthContext.Consumer>
-                    {(context) => {
-                        return (<div>{context.authenticated ? "Logged In" : "Please Login"}</div>);
-                    }}
-                </AuthContext.Consumer>
+                {/*<AuthContext.Consumer>*/}
+                {/*    {(context) => {*/}
+                {/*        return (<div>{context.authenticated ? "Logged In" : "Please Login"}</div>);*/}
+                {/*    }}*/}
+                {/*</AuthContext.Consumer>*/}
+                <div>{this.context.authenticated ? "Logged In" : "Please Login"}</div>
 
                 <span>I'm {this.props.name} and I am {this.props.age} years old.</span>
                 <br/>

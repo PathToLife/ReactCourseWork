@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import classes from './Cockpit.module.css';
 import AuthContext from '../../context/auth-context';
 
@@ -7,6 +7,7 @@ const log = (...args) => console.log('[Cockpit.js]', ...args);
 const Cockpit = (props) => {
 
     const toggleButtonRef = useRef(null);
+    const authContext = useContext(AuthContext);
 
     useEffect(() => {
         log('run once');
@@ -54,14 +55,15 @@ const Cockpit = (props) => {
             >
                 {props.showing ? 'Hide' : 'Show'} Persons
             </button>
-            <AuthContext.Consumer>
-                {(context) => {
-                    return (
-                        <button className={classes.salmon} onClick={context.login}>Login</button>
-                    )
-                }}
+            <button className={classes.salmon} onClick={authContext.login}>Login</button>
+            {/*<AuthContext.Consumer>*/}
+            {/*    {(context) => {*/}
+            {/*        return (*/}
+            {/*            <button className={classes.salmon} onClick={context.login}>Login</button>*/}
+            {/*        )*/}
+            {/*    }}*/}
 
-            </AuthContext.Consumer>
+            {/*</AuthContext.Consumer>*/}
         </div>
     )
 };

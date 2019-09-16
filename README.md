@@ -1,7 +1,5 @@
 ## React - The Complete Guide (incl. Hooks, React Router and Redux) 
 
-[![Build Status](https://pathtolife.visualstudio.com/ReactCourseWork/_apis/build/status/PathToLife.ReactCourseWork%20Build%20Only?branchName=master)](https://pathtolife.visualstudio.com/ReactCourseWork/_build/latest?definitionId=3&branchName=master)
-
 This is PathToLife's work on the course by Maximilian Schwarzmüller, with a modification to use the latest react hooks and inline styling
 
 Automated deployment of the master branch can be found here: [Test App Deloyment](https://reactcoursework.azurewebsites.net/)

@@ -1,0 +1,39 @@
+.Person {
+    border: 1px solid black;
+    box-shadow: 0 2px 3px grey;
+    display: block;
+    width: 60%;
+    padding: 16px;
+    text-align: center;
+    margin: 10px auto;
+    position: relative;
+}
+
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+}
+
+.deleteButton {
+    position: absolute;
+    top: 10px;
+    padding: 8px;
+    right: 10px;
+    border: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: salmon;
+}
+
+.id {
+    color: grey;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8em;
+}

@@ -1,0 +1,42 @@
+.Cockpit {
+    width: 60%;
+    margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+}
+
+
+button {
+    padding: 8px;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    font-weight: bold;
+}
+
+.red {
+    color: white;
+    background-color: red;
+}
+
+.salmon {
+    color: white;
+    background-color: salmon;
+}
+
+
+
+.green {
+    color: white;
+    background-color: lightgreen;
+}
+
+.bold {
+    font-weight: bold;
+}
